@@ -11,10 +11,11 @@ import NotFound from '404Notfound/404page';
 import PendingOrders from 'views/Orders/PendingOrders';
 import OrderView from 'views/Orders/OrderView';
 import AttendedOrders from 'views/Orders/AttendedOrders';
+import Employees from 'views/Employee/Employees';
 // import Navigate from "react-router-dom";
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
-const Customers = Loadable(lazy(() => import('views/Products/Customers'))); 
+const Customers = Loadable(lazy(() => import('views/Products/Customers')));
 
 // sample page routing
 
@@ -64,10 +65,14 @@ const MainRoutes = {
       path: '/AttendedOrders',
       element: <AttendedOrders />
     },
+    {
+      path: '/Employees',
+      element: <Employees />
+    },
 
     {
       path: '*',
-      element: <NotFound />,
+      element: <NotFound />
     }
   ]
 };
