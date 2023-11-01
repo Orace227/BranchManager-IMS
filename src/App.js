@@ -2,20 +2,11 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
-// import index from 'index.css';
-import { Route } from 'react-router-dom';
-import {useNavigate} from 'react-router-dom';
-// routing
+import { Route, useNavigate } from 'react-router-dom';
 import Routes from 'routes';
-
-// defaultTheme
 import themes from 'themes';
-
-// project imports
 import NavigationScroll from 'layout/NavigationScroll';
-
 import 'tailwindcss/tailwind.css';
-// import { CartProvider } from 'hooks/Cart/CartOrders';
 import FirebaseRegister from 'views/pages/authentication/auth-forms/AuthRegister';
 import CartManager from 'Helpers/CartManager';
 
@@ -32,14 +23,16 @@ const App = () => {
     (response) => response,
     (error) => {
       if (error.response.status === 401) {
-        console.log('Redirecting to login');
-        navigate('/login');
+        if (window.location.pathname !== '/register') {
+          console.log('Redirecting to login');
+          navigate('/login');
+        }
       }
 
+    
       return Promise.reject(error);
     }
-  );
-  
+    );
 
   return (
     <StyledEngineProvider injectFirst>
@@ -47,12 +40,10 @@ const App = () => {
         <CssBaseline />
         <CartManager>
           <NavigationScroll>
-            {/* <CartProvider> */}
             <Routes>
-              <Route path="/register" Component={FirebaseRegister}></Route>
-              <Route path="/login" Component={FirebaseRegister}></Route>
+              <Route path="/register" component={FirebaseRegister} />
+              <Route path="/login" component={FirebaseRegister} />
             </Routes>
-            {/* </CartProvider>/ */}
           </NavigationScroll>
         </CartManager>
       </ThemeProvider>
