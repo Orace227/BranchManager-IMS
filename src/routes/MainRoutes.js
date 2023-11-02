@@ -12,6 +12,9 @@ import PendingOrders from 'views/Orders/PendingOrders';
 import OrderView from 'views/Orders/OrderView';
 import AttendedOrders from 'views/Orders/AttendedOrders';
 import Employees from 'views/Employee/Employees';
+import SurveyForm from 'views/SurveyForm/CreateSurvey';
+import Survey from 'views/SurveyForm/Survey';
+import SurveyOrderView from 'views/SurveyForm/SurveyOrderView';
 // import Navigate from "react-router-dom";
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
@@ -68,6 +71,18 @@ const MainRoutes = {
     {
       path: '/Employees',
       element: <Employees />
+    },
+    {
+      path: '/SurveyForm',
+      element: <SurveyForm />
+    },
+    {
+      path: '/SurveyHistory',
+      element: <Survey />
+    },
+    {
+      path: '/SurveyOverView/:surveyId',
+      element: <SurveyOrderView />
     },
 
     {
