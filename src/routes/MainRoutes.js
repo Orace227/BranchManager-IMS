@@ -12,13 +12,20 @@ import PendingOrders from 'views/Orders/PendingOrders';
 import OrderView from 'views/Orders/OrderView';
 import AttendedOrders from 'views/Orders/AttendedOrders';
 import Employees from 'views/Employee/Employees';
-// import Navigate from "react-router-dom";
-// dashboard routing
+import Cookies from 'js-cookie';
+import { Navigate } from 'react-router';// import Navigate from "react-router-dom";
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 const Customers = Loadable(lazy(() => import('views/Products/Customers')));
 
-// sample page routing
+const auth = Cookies.get('Authtoken');
 
+function renderDashboardRoute() {
+  if (auth) {
+    return <DashboardDefault />;
+  } else {
+    return <Navigate to="/login" />;
+  }
+}
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -27,11 +34,11 @@ const MainRoutes = {
   children: [
     {
       path: '/',
-      element: <DashboardDefault />
+      element: renderDashboardRoute()
     },
     {
       path: 'dashboard',
-      element: <DashboardDefault />
+      element: renderDashboardRoute()
     },
     {
       path: '/Products',
