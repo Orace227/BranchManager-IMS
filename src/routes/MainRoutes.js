@@ -14,6 +14,9 @@ import AttendedOrders from 'views/Orders/AttendedOrders';
 import Employees from 'views/Employee/Employees';
 import Cookies from 'js-cookie';
 import { Navigate } from 'react-router';// import Navigate from "react-router-dom";
+import SurveyOrderView from 'views/SurveyForm/SurveyOrderView';
+import Survey from 'views/SurveyForm/Survey';
+import SurveyForm from 'views/SurveyForm/CreateSurvey';
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 const Customers = Loadable(lazy(() => import('views/Products/Customers')));
 
