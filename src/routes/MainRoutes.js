@@ -76,6 +76,18 @@ const MainRoutes = {
       path: '/Employees',
       element: <Employees />
     },
+    {
+      path: '/SurveyForm',
+      element: <SurveyForm />
+    },
+    {
+      path: '/SurveyHistory',
+      element: <Survey />
+    },
+    {
+      path: '/SurveyOverView/:surveyId',
+      element: <SurveyOrderView />
+    },
 
     {
       path: '*',

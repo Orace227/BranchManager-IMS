@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 import 'react-toastify/dist/ReactToastify.css';
 // project imports
-import PopularCard from './PopularCard';
-import TotalGrowthBarChart from './TotalGrowthBarChart';
+// import PopularCard from './PopularCard';
+// import TotalGrowthBarChart from './TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
 // import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,10 @@ import TotalCanceledCard from './TotalCanceledCard';
 import TotalPendingCard from './TotalPendingCard';
 import TotalApprovedCard from './TotalApprovedCard';
 import TotalAttendedCard from './TotalAttendedCard';
+import TotalPendingReq from './TotalPendingReq';
+import TotalApprovedReq from './TotalApprovedReq';
+import PendingEmployees from './PendingEmployees';
+import ApprovedEmployees from './ApprovedEmployees';
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -118,11 +122,25 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12}>
           <Grid container spacing={gridSpacing}>
-            <Grid item xs={12} md={8}>
-              <TotalGrowthBarChart isLoading={isLoading} />
+            <Grid item xs={12} md={3} lg={3}>
+              <Grid container spacing={gridSpacing}>
+                <Grid item md={12} sm={6} xs={12}>
+                  <TotalPendingReq isLoading={isLoading} />
+                </Grid>
+                <Grid item md={12} sm={6} xs={12}>
+                  <TotalApprovedReq isLoading={isLoading} />
+                </Grid>
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <PopularCard isLoading={isLoading} />
+            <Grid item xs={12} md={9}>
+              <PendingEmployees isLoading={isLoading} />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container spacing={gridSpacing}>
+            <Grid item xs={12} md={12}>
+              <ApprovedEmployees isLoading={isLoading} />
             </Grid>
           </Grid>
         </Grid>
