@@ -88,7 +88,7 @@ const FirebaseLogin = ({ ...others }) => {
 
   const handleSubmit = async (values, setErrors, setStatus, setSubmitting) => {
     try {
-      const response = await axios.post('/login', { email: values.email, password: values.password},
+      const response = await axios.post('/login', { email: values.email, password: values.password, panel: "Branch Manager"},
       {
         withCredentials: true
       }

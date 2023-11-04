@@ -20,7 +20,7 @@ import SurveyForm from 'views/SurveyForm/CreateSurvey';
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 const Customers = Loadable(lazy(() => import('views/Products/Customers')));
 
-const auth = Cookies.get('Authtoken');
+const auth = Cookies.get('branchAuthtoken');
 
 function renderDashboardRoute() {
   if (auth) {

@@ -181,9 +181,9 @@ export default function Employees() {
       console.log(user);
       const isDelete = window.confirm('Are you sure you want to cancel request of Employee having name ' + user.username);
       if (isDelete) {
-        user.isConfirmed = 'canceled';
+        user.isConfirmed = 'declined';
         const deletedCustomer = await axios.post(`/UpdateEmployee`, user, {
-          withCredentials: true // Include credentials (cookies) with the request
+          withCredentials: true 
         });
         if (deletedCustomer) {
           toast.success('Employee request canceled successfully!!');

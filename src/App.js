@@ -40,11 +40,15 @@ const App = () => {
       return Promise.reject(error);
     }
   );
-  const auth = Cookies.get('Authtoken');
-
+  const auth = Cookies.get('branchAuthtoken');
+  console.log("auth:", auth);
+  console.log("window.location.pathname:", window.location.pathname);
+  
   if (auth && (window.location.pathname === '/login' || window.location.pathname === '/register')) {
-    navigate('/dashboard'); 
+    console.log("Redirecting to /dashboard");
+    navigate('/dashboard');
   }
+  
 
   return (
     <StyledEngineProvider injectFirst>

@@ -5,9 +5,7 @@ import { Formik, Form, ErrorMessage, Field } from 'formik';
 import {
   Box,
   Button,
-  CardContent,
   Checkbox,
-  Card, 
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -15,7 +13,6 @@ import {
   IconButton,
   InputAdornment,
   TextField,
-  Typography,
   useTheme,
   useMediaQuery
 } from '@mui/material';
@@ -23,6 +20,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import AnimateButton from 'ui-component/extended/AnimateButton';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required('Username is required').trim(),
@@ -47,14 +45,16 @@ const initialValues = {
   email: '',
   password: '',
   confirmPass: '',
-  submit: null
+  submit: null,
+  panel: "Branch Manager", // Add the panel information here
+
 };
 
 const FirebaseRegister = () => {
   const theme = useTheme();
   const [showPassword, setShowPassword] = useState(false);
   const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const navigate = useNavigate(); 
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -76,8 +76,8 @@ const FirebaseRegister = () => {
       });
       if (response.data) {
         setStatus({ success: true });
-        setRegistrationSuccess(true); 
-        console.log('success', response.data);     
+        console.log('success', response.data); 
+        navigate("/dashboard");    
       } else {
         setErrors({ submit: 'Registration failed' });
       }
@@ -92,27 +92,6 @@ const FirebaseRegister = () => {
   }, []);
   return (
     <>
-  
-      {registrationSuccess && (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-          <Card sx={{
-            width: '500px ',
-            height: '300px',
-            borderRadius: 4,
-            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.25)',
-          }}>
-            <CardContent>
-              <Typography variant="h5" align="center">
-                Your request has been sent to the branch manager.
-              </Typography>
-              <Typography variant="subtitle1" align="center">
-                You will receive an email when your request is approved.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Box>
-      )}
-
 
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
         <Form noValidate>
