@@ -40,7 +40,7 @@ const Login = () => {
                             Hi, Welcome Back
                           </Typography>
                           <Typography variant="caption" fontSize="16px" textAlign={matchDownSM ? 'center' : 'inherit'}>
-                            Employee Login
+                            Branch manager Login
                           </Typography>
                         </Stack>
                       </Grid>
